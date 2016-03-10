@@ -29,7 +29,8 @@ class operation (webappmulti.app):
     Methods operate and sign should be overidden by children classes
     """
 
-    def operate (self, oper1, oper2):
+    def operate (self, oper1, oper2): #se espera que los hijos de la clase los redefinan
+    #no haria falta ponerlo
         """Placeholder operation, to be extended by children of this class.
 
         Returns the value of applying it to oper1, oper2."""
@@ -45,10 +46,10 @@ class operation (webappmulti.app):
 
     def parse (self, request, rest):
 
-        verb = request.split(' ',1)[0]
+        verb = request.split(' ',1)[0]  #extraigo la orden
         parts = request.split('\r\n\r\n',1)
         if len (parts) == 2:
-            body = parts[1]
+            body = parts[1] #me quedo con el cuerpo
         else:
             body = ""
         return (verb, body)
@@ -56,10 +57,12 @@ class operation (webappmulti.app):
     def process (self, (verb, body)):
 
         if verb == 'PUT':
-            params = urlparse.parse_qs(body)
+            params = urlparse.parse_qs(body) #leo la qs y lo meto en
+            #un diccionario . Meto el cuerpo de l apeticion en un
+            #diccionario
             try:
-                self.oper1 = int(params['oper1'][0])
-                self.oper2 = int(params['oper2'][0])
+                self.oper1 = int(params['oper1'][0]) #me quedo con el primer parametro
+                self.oper2 = int(params['oper2'][0]) #me quedo con el segundo parametro
                 self.result = self.operate (self.oper1, self.oper2)
                 success = True
             except:
@@ -68,13 +71,13 @@ class operation (webappmulti.app):
                                     "Error in parameters for operation")
         elif verb == 'GET':
             success = True
-        else:
+        else: #si no ponemos ni GET ni PUT
             success = False
             (error, message) = ("400 Error",
                                 "HTTP verb " + verb + " not supported")
 
         if success:
-            return ("200 OK", decorateHTML(str(self.oper1) + self.sign() + 
+            return ("200 OK", decorateHTML(str(self.oper1) + self.sign() +
                                            str(self.oper2) +
                                            "=" + str(self.result)))
         else:
@@ -113,7 +116,7 @@ class mul (operation):
 
         return '*'
 
-class div (operation):
+class div (operation): #heredad de la clase operacion que implementa todo lo que tienen comun las  4 operaciones
     def operate (self, oper1, oper2):
 
         return oper1 / oper2
@@ -121,14 +124,14 @@ class div (operation):
     def sign (self):
 
         return '/'
-        
+
 if __name__ == "__main__":
     addObj = add()
     subObj = sub()
     mulObj = mul()
     divObj = div()
     multiCalc = webappmulti.webApp ("localhost", 1234,
-                                    {'/add': addObj,
+                                    {'/add': addObj, #ponemos las miniapps en esas URL
                                      '/sub': subObj,
                                      '/mul': mulObj,
                                      '/div': divObj,})
