@@ -3,11 +3,41 @@
 <jokelist>
   <joke title="Van dos">
     <start>Van dos por una calle</start>
-    <end>y se cae el del medio</end>
+    <intermedia>y se cae el del medio</intermedia>
     <end>y luego vienen</end>
   </joke>
 
-  <joke title="Y otros dos">
+  <joke title="Y otros dos1">
+    <start>Otros dos por una calle</start>
+    <end>y se cae el otro del medio</end>
+    <end>y luego vienen los otros dos de nuevo</end>
+  </joke>
+
+  <joke title="Y otros dos2">
+    <start>Otros dos por una calle</start>
+    <end>y se cae el otro del medio</end>
+    <end>y luego vienen los otros dos de nuevo</end>
+  </joke>
+
+  <joke title="Y otros dos3">
+    <start>Otros dos por una calle</start>
+    <end>y se cae el otro del medio</end>
+    <end>y luego vienen los otros dos de nuevo</end>
+  </joke>
+
+  <joke title="Y otros dos5">
+    <start>Otros dos por una calle</start>
+    <end>y se cae el otro del medio</end>
+    <end>y luego vienen los otros dos de nuevo</end>
+  </joke>
+
+  <joke title="Y otros dos8">
+    <start>Otros dos por una calle</start>
+    <end>y se cae el otro del medio</end>
+    <end>y luego vienen los otros dos de nuevo</end>
+  </joke>
+
+  <joke title="Y otros dos9">
     <start>Otros dos por una calle</start>
     <end>y se cae el otro del medio</end>
     <end>y luego vienen los otros dos de nuevo</end>
